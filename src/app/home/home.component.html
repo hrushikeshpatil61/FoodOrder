@@ -1,0 +1,25 @@
+<app-search></app-search>
+<ul>
+    <li *ngFor="let foodItem of foods">
+        <a>
+            <img src= {{foodItem.imageUrl}} alt="food images">
+        </a>
+        <div class="content">
+            <div class="name">
+                {{foodItem.name}}
+            </div>
+            <span *ngIf="foodItem.favorite" >❤️</span>
+            <span *ngIf="!foodItem.favorite">🤍</span>
+            
+            <div class="product-item-footer">
+                <div class="origins">
+                    <span *ngFor="let origin of foodItem.origins">
+                        {{origin}}
+                    </span>
+                </div>
+            </div>
+            <div class="time">🕑 {{foodItem.cookTime}}</div>
+            <div class="price">$  {{foodItem.price}}</div>
+        </div>
+    </li>
+</ul>
