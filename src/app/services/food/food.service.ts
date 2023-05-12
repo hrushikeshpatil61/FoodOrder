@@ -1,12 +1,34 @@
 import { Injectable } from '@angular/core';
 import { foods } from 'src/app/shared/models/food';
+import { Tag } from 'src/app/shared/models/tag';
 @Injectable({
   providedIn: 'root'
 })
 export class FoodService {
 
   constructor() { }
+  getFoodByTag(tag:string) :foods[]{
 
+    return tag=='all'?this.getAll():this.getAll().filter(fooditem =>fooditem.tags?.includes(tag));
+    
+  }
+  TagArr= [
+    {name:'all',count:14},
+    {name:'breakfast',count:14},
+    {name:'lunch',count:14},
+    {name:'dinner',count:14},
+    {name:'pizza',count:14},
+    {name:'fastfood',count:14},
+    {name:'fry',count:14}
+    
+  ];
+  getAllTag():Tag[]{
+    for(let i = 1;i<this.TagArr.length;i++){
+      this.TagArr[i].count = this.getAll().filter(fooditem =>fooditem.tags?.includes(this.TagArr[i].name)).length;
+    }
+    this.TagArr[0].count = this.getAll().length;
+    return this.TagArr;
+  }
   getAll():foods[]{
     return [
       {
@@ -37,7 +59,7 @@ export class FoodService {
         name:'food3',
         favorite:false,
         star: 0,
-        tags:['fastfood','pizza','lunch'],
+        tags:['fry','pizza','breakfast'],
         imageUrl:'assets/img3.jpg',
         cookTime:'10-20',
         origins:['italy']
@@ -48,7 +70,7 @@ export class FoodService {
         name:'food4',
         favorite:false,
         star: 0,
-        tags:['fastfood','pizza','lunch'],
+        tags:['fastfood','pizza','breakfast'],
         imageUrl:'assets/img4.jpg',
         cookTime:'10-20',
         origins:['italy']
@@ -59,7 +81,7 @@ export class FoodService {
         name:'food5',
         favorite:false,
         star: 0,
-        tags:['fastfood','pizza','lunch'],
+        tags:['fastfood','pizza','dinner'],
         imageUrl:'assets/img5.jpg',
         cookTime:'10-20',
         origins:['italy']
@@ -70,7 +92,7 @@ export class FoodService {
         name:'food6',
         favorite:false,
         star: 0,
-        tags:['fastfood','pizza','lunch'],
+        tags:['fastfood','pizza','dinner'],
         imageUrl:'assets/img6.jpg',
         cookTime:'10-20',
         origins:['italy']
@@ -81,7 +103,7 @@ export class FoodService {
         name:'food7',
         favorite:false,
         star: 0,
-        tags:['fastfood','pizza','lunch'],
+        tags:['fastfood','pizza','breakfast'],
         imageUrl:'assets/img7.jpg',
         cookTime:'10-20',
         origins:['italy']
