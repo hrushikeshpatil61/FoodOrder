@@ -1,8 +1,9 @@
 <app-search></app-search>
 <app-tag></app-tag>
+<app-not-found [visible]="!foods || foods.length<=0" resetLinkText="Reset Search"></app-not-found>
 <ul>
     <li *ngFor="let foodItem of foods">
-        <a>
+        <a routerLink="/food/{{foodItem.id}}">
             <img src= {{foodItem.imageUrl}} alt="food images">
         </a>
         <div class="content">
@@ -22,5 +23,6 @@
             <div class="time">🕑 {{foodItem.cookTime}}</div>
             <div class="price">$  {{foodItem.price}}</div>
         </div>
+    
     </li>
 </ul>

@@ -12,6 +12,9 @@ export class FoodService {
     return tag=='all'?this.getAll():this.getAll().filter(fooditem =>fooditem.tags?.includes(tag));
     
   }
+  getFoodById(id:number):foods{
+    return this.getAll().find(food=>food.id == id)!;
+  }
   TagArr= [
     {name:'all',count:14},
     {name:'breakfast',count:14},
