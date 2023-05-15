@@ -1,0 +1,38 @@
+<div class="jumbotron bg-transparent text-center">
+    <div class="card text-center">
+        <h6 class="card-header">
+            Login With Google in Angular 13
+        </h6>
+        <div class="card-block">
+            <h4 class="card-title">
+                Not Signed In
+            </h4>
+            <p class="card-text">
+                SIgn In With
+            </p>
+        </div>
+        <div class="card-block">
+            <button class="btn btn-social-icon btn-google mx-1" (click)="signWithGoogle()">
+                <span class="fab fa-google">
+
+                </span>
+            </button>
+        </div>
+    </div>
+    <div *ngIf="user" class="card text-center">
+        <h6 class="card-header">
+            Login With Google in Angular-13
+        </h6>
+        <div class="card-block"></div>
+        <img *ngIf="user.photoUrl" src="{{user.photoUrl}}" alt="" class="card-img-top img-responsive photo">
+        <div class="card-block">
+            <h4 class="card-title">{{user.name}}</h4>
+            <p class="card-text">{{user.email}}</p>
+            <p class="card-text">Logged In With: {{user.provider}}</p>
+        </div>
+        <div class="card-block">
+            <button class="btn btn-danger" (click)="signOut()">signOut</button>
+        </div>
+        
+    </div>
+</div>
